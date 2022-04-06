@@ -4,9 +4,9 @@ namespace app{
         public static List<Player> playerList = new List<Player>();
 
         private static int playerCount = 0;
-        public string mName;
-        public int x;
-        public int y;
+        protected string mName;
+        protected int x;
+        protected int y;
         public Player(): this("", 0, 0){}
         public Player(string name, int x=0, int y=0){
             mName = name;

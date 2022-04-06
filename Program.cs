@@ -6,11 +6,7 @@ namespace app
     {
         static void Main(string[] args)
         {
-            Player player1 = new Player{
-                mName = "michael jordan",
-                x = 4,
-                y =  2
-            };
+            Player player1 = new Player("michael jordan", 1, 2);
             Player player2 = new Player(player1);
             Player player3 = player2 + 1;
             player3.X = -1; 
