@@ -13,6 +13,7 @@
             player2.print(); // michael jordan 4 2
             BBPlayer player1 = new BBPlayer("kobe", 1, "shooting guard");
             player1.print(); //kobe 0 1 forwrad
+            Console.WriteLine(Player.PlayerCount);
         }
     }
     public interface IPlayer{
@@ -50,7 +51,7 @@
                 return this.y;
             }
         }
-        public int PlayerCount{
+        public static int PlayerCount{
             get{
                 return Player.playerCount;
             }
