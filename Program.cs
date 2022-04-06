@@ -1,19 +1,27 @@
-﻿namespace app 
+﻿using System.Collections;
+
+namespace app 
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Player player2 = new Player("michael jordan", 4, 2);
-            Player player3 = new Player(player2);
-            player3.print(); //michael jordan 4 3
-            Player player4 = player2 + 1;
-            player4.print();  //michael jordan 5 4
-            player2++; //exception
-            player2.print(); // michael jordan 4 2
-            BBPlayer player1 = new BBPlayer("kobe", 1, "shooting guard");
-            player1.print(); //kobe 0 1 forwrad
+            Player player1 = new Player("michael jordan", 4, 2);
+            Player player2 = new Player(player1);
+            // player2.print(); //michael jordan 4 3
+            Player player3 = player2 + 1;
+            player3.X = -1; // sets x coordinate to -1
+            // player3.print();  //michael jordan -1 4
+            player1++; //exception
+            // player2.print(); // michael jordan 4 2
+            BBPlayer player4 = new BBPlayer("kobe", 1, "shooting guard");
+            // player4.print(); //kobe 0 1 forward
+            BBPlayer player5 = new BBPlayer("kawhi", 1, 2, "small forward");
+            // player5.print();
             Console.WriteLine(Player.PlayerCount);
+            foreach(Player p in Player.playerList){
+                p.print();
+            }
         }
     }
     public interface IPlayer{
@@ -21,6 +29,8 @@
     }
 
     public class Player:IPlayer{
+
+        public static List<Player> playerList = new List<Player>();
 
         private static int playerCount = 0;
         protected string mName;
@@ -32,11 +42,14 @@
             X = x;
             this.y = y;
             ++Player.playerCount;
+            playerList.Add(this);
         }
         public Player(Player other){
             this.mName = other.mName;
             X = other.x;
             this.y = other.y;
+            ++Player.playerCount;
+            playerList.Add(this);
         }
         public int X{
             get{
